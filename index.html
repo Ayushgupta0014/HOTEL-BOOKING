@@ -88,30 +88,29 @@
     </footer>
 
     <!-- ✅ JavaScript for Razorpay Integration -->
-    <script>
-        function bookRoom(amount) {
-            var options = {
-                "key": "rzp_test_dpnCoDARLsU9lk", // ✅ Yahan API Key daalein
-                "amount": amount, // Amount in paise (e.g., 500000 = ₹5000)
-                "currency": "INR",
-                "name": "Hotel Booking",
-                "description": "Room Booking",
-                "image": "https://example.com/your_logo.png", // ✅ Add your logo URL
-                "handler": function (response) {
-                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
-                },
-                "prefill": {
-                    "name": "Customer Name",
-                    "email": "customer@example.com",
-                    "contact": "9999999999"
-                },
-                "theme": {
-                    "color": "#ff6600"
-                }
-            };
-            var rzp1 = new Razorpay(options);
-            rzp1.open();
-        }
-    </script>
-</body>
-</html>
+   <script>
+    function bookRoom(amount) {
+        console.log("Book Room function called"); // Debugging
+        var options = {
+            "key": "rzp_test_dpnCoDARLsU9lk", // ✅ Yahan API Key daalein
+            "amount": amount, // Amount in paise (e.g., 500000 = ₹5000)
+            "currency": "INR",
+            "name": "Hotel Booking",
+            "description": "Room Booking",
+            "image": "https://example.com/your_logo.png", // ✅ Add your logo URL
+            "handler": function (response) {
+                alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+            },
+            "prefill": {
+                "name": "Customer Name",
+                "email": "customer@example.com",
+                "contact": "9999999999"
+            },
+            "theme": {
+                "color": "#ff6600"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+</script>
