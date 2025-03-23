@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script> <!-- ✅ Razorpay Script -->
+</head>
+<body>
+
+    <!-- ✅ Navbar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ✅ Hero Section -->
+    <section id="home">
+        <div class="hero">
+            <h1>Welcome to Our Hotel</h1>
+            <p>Experience luxury and comfort with us</p>
+            <a href="#rooms" class="btn">Explore Rooms</a>
+        </div>
+    </section>
+
+    <!-- ✅ Rooms Section -->
+    <section id="rooms">
+        <h2>Rooms Available</h2>
+        <div class="room-container">
+            <div class="room">
+                <img src="Room1.jpg" alt="Luxury Room">
+                <h3>Luxury Room</h3>
+                <p>₹5000/night | Free WiFi | Sea View | Full Day Meal Included</p>
+                <button class="book-btn" onclick="bookRoom(500000)">Book Now</button> <!-- ✅ Razorpay Integration -->
+            </div>
+
+            <div class="room">
+                <img src="Room2.jpeg" alt="Deluxe Room">
+                <h3>Deluxe Room</h3>
+                <p>₹3500/night | Free Breakfast | City View</p>
+                <button class="book-btn" onclick="bookRoom(350000)">Book Now</button> <!-- ✅ Razorpay Integration -->
+            </div>
+
+            <div class="room">
+                <img src="Room3.jpg" alt="Standard Room">
+                <h3>Standard Room</h3>
+                <p>₹2500/night | AC | TV | WiFi</p>
+                <button class="book-btn" onclick="bookRoom(250000)">Book Now</button> <!-- ✅ Razorpay Integration -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ Contact Form Section -->
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <p>Have any questions? Fill out the form below!</p>
+
+        <div class="contact-container">
+            <form class="contact-form">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="message">Your Message</label>
+                <textarea id="message" placeholder="Enter your message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ✅ Footer -->
+    <footer>
+        <p>© 2025 Our Hotel | All Rights Reserved</p>
+        <div class="social-icons">
+            <a href="#"><img src="facebookIcon.jpg" alt="Facebook"></a>
+            <a href="#"><img src="instagramIcon.jpg" alt="Instagram"></a>
+            <a href="#"><img src="twitterIcon.jpg" alt="Twitter"></a>
+        </div>
+    </footer>
+
+    <!-- ✅ JavaScript for Razorpay Integration -->
+    <script>
+        function bookRoom(amount) {
+            var options = {
+                "key": "rzp_test_dpnCoDARLsU9lk", // ✅ Yahan API Key daalein
+                "amount": amount, // Amount in paise (e.g., 500000 = ₹5000)
+                "currency": "INR",
+                "name": "Hotel Booking",
+                "description": "Room Booking",
+                "image": "https://example.com/your_logo.png", // ✅ Add your logo URL
+                "handler": function (response) {
+                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                },
+                "prefill": {
+                    "name": "Customer Name",
+                    "email": "customer@example.com",
+                    "contact": "9999999999"
+                },
+                "theme": {
+                    "color": "#ff6600"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+    </script>
+</body>
+</html>
