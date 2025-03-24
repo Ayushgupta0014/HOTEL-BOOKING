@@ -50,7 +50,7 @@
             <div class="room">
                 <img src="Room3.jpg" alt="Standard Room">
                 <h3>Standard Room</h3>
-                <p>₹2500/night | AC | TV | WiFi</p>
+                <p>₹25/night | AC | TV | WiFi</p>
                 <button class="book-btn" onclick="bookRoom(250000)">Book Now</button> <!-- ✅ Razorpay Integration -->
             </div>
         </div>
@@ -88,29 +88,30 @@
     </footer>
 
     <!-- ✅ JavaScript for Razorpay Integration -->
-   <script>
-    function bookRoom(amount) {
-        console.log("Book Room function called"); // Debugging
-        var options = {
-            "key": "rzp_test_dpnCoDARLsU9lk", // ✅ Yahan API Key daalein
-            "amount": amount, // Amount in paise (e.g., 500000 = ₹5000)
-            "currency": "INR",
-            "name": "Hotel Booking",
-            "description": "Room Booking",
-            "image": "https://example.com/your_logo.png", // ✅ Add your logo URL
-            "handler": function (response) {
-                alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
-            },
-            "prefill": {
-                "name": "Customer Name",
-                "email": "customer@example.com",
-                "contact": "9999999999"
-            },
-            "theme": {
-                "color": "#ff6600"
-            }
-        };
-        var rzp1 = new Razorpay(options);
-        rzp1.open();
-    }
-</script>
+    <script>
+        function bookRoom(amount) {
+            var options = {
+                "key": "rzp_test_dpnCoDARLsU9Ik", // ✅ Yahan API Key daalein
+                "amount": amount, // Amount in paise (e.g., 500000 = ₹5000)
+                "currency": "INR",
+                "name": "Hotel Booking",
+                "description": "Room Booking",
+                "image": "https://example.com/your_logo.png", // ✅ Add your logo URL
+                "handler": function (response) {
+                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                },
+                "prefill": {
+                    "name": "Customer Name",
+                    "email": "customer@example.com",
+                    "contact": "9999999999"
+                },
+                "theme": {
+                    "color": "#ff6600"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+    </script>
+</body>
+</html>
